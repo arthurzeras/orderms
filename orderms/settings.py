@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for orderms project.
 
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "core",
 ]
 
 MIDDLEWARE = [
@@ -125,3 +128,13 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOG_LEVEL = os.getenv("LOG_LEVEL") or "INFO"
+
+# Logging
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "root": {"level": LOG_LEVEL, "handlers": ["console"]},
+    "handlers": {"console": {"class": "logging.StreamHandler"}},
+}
