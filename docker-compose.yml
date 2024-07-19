@@ -10,6 +10,12 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  broker:
+    image: rabbitmq:3.13-management
+    ports:
+      - 15672:15672
+      - 5672:5672
+
   api:
     build: ./
     command: sh ./start.sh
