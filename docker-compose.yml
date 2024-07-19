@@ -17,10 +17,20 @@ services:
       - 5672:5672
 
   api:
-    build: ./
-    command: sh ./start.sh
+    build:
+      context: ./
+      target: api
     ports: 
       - 8000:8000
+    volumes:
+      - ./:/code
+    depends_on:
+      - db
+
+  consumer:
+    build:
+      context: ./
+      target: consumer
     volumes:
       - ./:/code
     depends_on:
