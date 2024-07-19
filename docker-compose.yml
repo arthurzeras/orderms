@@ -10,5 +10,15 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  api:
+    build: ./
+    command: sh ./start.sh
+    ports: 
+      - 8000:8000
+    volumes:
+      - ./:/code
+    depends_on:
+      - db
+
 volumes:
   pgdata:

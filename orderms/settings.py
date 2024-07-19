@@ -76,9 +76,9 @@ WSGI_APPLICATION = "orderms.wsgi.application"
 DATABASES = {
     "default": {
         "PORT": 5432,
+        "HOST": "db",
         "NAME": "orderms",
         "USER": "postgres",
-        "HOST": "localhost",
         "PASSWORD": "postgres",
         "ENGINE": "django.db.backends.postgresql",
     }
